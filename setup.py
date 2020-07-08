@@ -5,7 +5,7 @@ with open("README.md","r") as fh:
 
 setup(
     name="algoutils",
-    version="0.0.2",
+    version="0.0.3",
     description="Util functions to be used in algorithmic trading.",
     py_modules=["algoutils"],
     classifiers=[
