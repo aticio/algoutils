@@ -1,24 +1,15 @@
 import math
 import logging
-import ntplib
+import time
 
 # Util functions
 def get_current_timestamp():
-    """Function that gets timestamp from time-a.nist.gov to be able to sync with broker
+    """Function that gets timestamp
 
     Returns:
         int -- timestamp in milliseconds. if None, there is a problem with the connection.
     """
-    TIME1970 = 2208988800000
-
-    ntp_client = ntplib.NTPClient()
-    try:
-        response = ntp_client.request("pool.ntp.org", version=3)
-        timestamp = int(response.tx_timestamp * 1000)
-        timestamp = timestamp - TIME1970
-    except:
-        logging.error("ntplib error. trying again")
-        return get_current_timestamp()
+    timestamp = int(time.time() * 1000)
     return timestamp
 
 def calculate_share(equity, risk_factor, current_atr, custom_position_risk):
