@@ -13,7 +13,7 @@ def get_current_timestamp():
 
     ntp_client = ntplib.NTPClient()
     try:
-        response = ntp_client.request("time.nist.gov", version=3)
+        response = ntp_client.request("pool.ntp.org", version=3)
         timestamp = int(response.tx_timestamp * 1000)
         timestamp = timestamp - TIME1970
     except:
